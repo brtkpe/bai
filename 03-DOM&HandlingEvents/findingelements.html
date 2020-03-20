@@ -11,7 +11,19 @@
     <p>Find elements by tag name</p>
 
     <script>
-        // a JavaScript code here ...
+            var tagget = document.getElementsByTagName("h1")[0];
+        console.log(tagget.innerHTML);
+
+        var idget = document.getElementById("someTest");
+        console.log(idget.innerHTML);
+
+        var classget = document.getElementsByClassName("important")[0];
+        console.log(classget.innerHTML);
+
+        var getallp = document.getElementsByTagName("p");
+        for (let i = 0; i < getallp.length; i++) {
+            console.log(getallp[i].innerHTML);
+        }
 
     </script>
 </body>
