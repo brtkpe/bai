@@ -1,13 +1,38 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Create DOM elements</title>
-		<meta charset="UTF-8">
-	</head>
-	<body>
-		<script>
-			// a JavaScript code here ...
-			
-		</script>
-	</body>
+
+<head>
+	<title>Create DOM elements</title>
+	<meta charset="UTF-8">
+	<style>
+		table {
+			border-collapse: collapse;			
+		}
+
+		th {			
+			border: 1px solid black;
+		}
+	</style>
+</head>
+
+<body>
+	<script>
+		let table = document.createElement('table');
+		table.innerHTML = `
+  			<tr>
+    			<th>1</th>
+   				<th>2</th>
+  			</tr>
+  			<tr>
+  				<th>3</th>
+    			<th>4</th>
+  			</tr>
+		`;
+		table.style.width = '20%';
+		table.style.height = '60px';
+
+		document.body.appendChild(table);
+	</script>
+</body>
+
 </html>
