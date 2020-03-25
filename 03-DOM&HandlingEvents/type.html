@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Typing test</title>
-		<meta charset="UTF-8">
-	</head>
-	<body>
-		<h1>How fast are your fingers?</h1>
-		<h3>You have 30 seconds. Just start typing...</h3>
-		<p>Nam strzelać nie kazano. - Wstąpiłem na działo<br>
+
+<head>
+	<title>Typing test</title>
+	<meta charset="UTF-8">
+</head>
+
+<body>
+	<h1>How fast are your fingers?</h1>
+	<h3>You have 30 seconds. Just start typing...</h3>
+	<p>Nam strzelać nie kazano. - Wstąpiłem na działo<br>
 		I spójrzałem na pole; dwieście armat grzmiało.<br>
 		Artyleryi ruskiej ciągną się szeregi,<br>
 		Prosto, długo, daleko, jako morza brzegi;<br>
@@ -19,13 +21,30 @@
 		Czarne chorągwie na śmierć prowadzą zastępy.<br>
 		Przeciw nim sterczy biała, wąska, zaostrzona,<br>
 		Jak głaz bodzący morze, reduta Ordona.</p>
-		
-		<textarea rows="15" cols="50"></textarea><br>
-		
-		<script>
-			// a JavaScript code here ...
-			
-		</script>
-		
-	</body>
+
+	<textarea rows="15" cols="50" oninput="test()"></textarea><br>
+
+	<script>
+		function test() {
+
+			if (check) {
+				check = false;
+
+				setTimeout(() => {
+					var words = document.getElementsByTagName('textarea')[0].value.split(' ').length;
+
+					var characters = document.getElementsByTagName('textarea')[0].value.length;
+
+					var newh2 = document.createElement('h2');
+					newh2.innerHTML = `SCORE <br> words: ${words}<br> characters: ${characters}`;
+					document.body.appendChild(newh2);
+				}, 2000);
+			}
+		}
+		var check = true;
+
+	</script>
+
+</body>
+
 </html>
