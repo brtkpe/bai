@@ -1,9 +1,36 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <style>
+    #app {
+      width: 300px;
+      border: 1px solid black;
+      text-align: center;
+      line-height: 5px;
+    }
+  
+    a {
+      display: block;
+      margin: 16px 0;
+    }
+  
+    p:nth-child(1) {
+      font-weight: bold;
+    }
+  </style>
+  
 </head>
+
 <body>
+  <div id="app">
+    <p>{{company.toUpperCase()}}</p>
+    <p>{{address}} </p>
+    <p>{{postcode}} {{city}}</p>
+    <p>tel. {{landline}}, {{mobile}}</p>
+    <a v-bind:href="web">{{web}} </a>
+  </div>
   <script>
     var app = new Vue({
       el: '#app',
@@ -20,4 +47,5 @@
   </script>
 
 </body>
+
 </html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>grades</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-size: 20px;
+        }
+
+        ul,
+        li,
+        p {
+            margin: 2px 2px 0;
+            display: inline-block;
+        }
+
+        p:nth-last-child(1) {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <p>Student's grades:</p>
+        <ul>
+            <li v-for="item in grades">{{ item }} </li>
+        </ul>
+        <p>Average grade: {{ average }}</p>
+    </div>
+    
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                grades: [
+                    4, 5, 3, 2, 3, 5, 5, 2, 4
+                ]
+            },
+            computed: {
+                average: function () {
+                    let sum = this.grades.reduce((last, next) => next += last);
+                    let avg = sum / this.grades.length;
+                    return avg.toFixed(2);
+                }
+            }
+
+        });
+    </script>
+
+</body>
+
+</html>
