@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List of personal data</title>
+    <style>
+        button {
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <button type="button" onclick="connect()">Display list of people</button>
+    <ol>
+    </ol>
+
+    <script>
+        function connect() {
+            var method = 'GET';
+            var URL =
+                'https://gist.githubusercontent.com/brtkpe/2569077af3b8b511b11642177b1f2681/raw/4b9e908a0aab28bbb92b54ceb004cf3d550a06b1/people.json';
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function () {
+                display(this);
+            }
+            xhr.open(method, URL);
+            xhr.send();
+        }
+
+        function display(r) {
+            if (r.readyState == 4 && r.status == 200) {
+                const response = JSON.parse(r.response);
+                const ol = document.getElementsByTagName('ol')[0];
+                for (let i of response) {
+                    const item = document.createElement('li');
+                    item.innerHTML = `${i.name} ${i.surname.toUpperCase()}, ${i.country}`;
+                    ol.appendChild(item);
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
