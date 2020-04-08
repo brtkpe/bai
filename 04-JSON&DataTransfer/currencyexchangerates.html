@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency exchange rates</title>
+</head>
+<style>
+  * {
+      font-size: 20px;
+  }
+</style>
+<body>
+    <h1>Current Exchange Rates</h1>
+    <ol></ol>
+    <script>
+        function connect(code) {
+            var method = 'GET';
+            var URL =
+                `http://api.nbp.pl/api/exchangerates/rates/a/${code}/?format=json`;
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function () {
+
+                if (this.readyState == 4 && this.status == 200) {
+
+                    const code = JSON.parse(this.response).code;
+                    const mid = JSON.parse(this.response).rates[0].mid;
+                    const ol = document.getElementsByTagName('ol')[0];
+                    const item = document.createElement('li');
+                    item.innerHTML = `${code}: ${mid.toFixed(2)}`;
+                    ol.appendChild(item);
+                }
+            }
+
+            xhr.open(method, URL);
+            xhr.send();
+        }
+
+        connect('EUR');
+        connect('GBP');
+        connect('USD');
+    </script>
+</body>
+
+</html>
