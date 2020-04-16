@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        input,
+        button {
+            margin: 10px 10px;
+            font-size: 20px;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-model="title" placeholder="title">
+        <input type="text" v-model="name" placeholder="name">
+        <input type="text" v-model="surname" placeholder="surname">
+        <button v-on:click="saveData">Save</button>
+
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                title: '',
+                name: '',
+                surname: ''
+            },
+            methods: {
+                saveData: function () {
+                    const name = this.name;
+                    const surname = this.surname;
+                    const title = this.title;
+
+                    console.log(`Title: ${title}, Author: ${name} ${surname}`);
+
+                }
+            }
+
+        });
+    </script>
+</body>
+
+</html>

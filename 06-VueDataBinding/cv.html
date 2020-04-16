@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        body {
+            margin: 20px;
+        }
+
+        h3 {
+            margin: 20px 0 5px;
+            text-transform: uppercase;
+        }
+
+        .data input {
+            display: block;
+            width: 150px;
+            padding: 5px;
+            margin: 5px 0;
+        }
+
+        .sex label {
+            margin-right: 20px;
+        }
+
+        .skills div {
+            margin-bottom: 5px;
+        }
+
+        .btn {
+            width: 120px;
+            font-size: 20px;
+            text-transform: uppercase;
+            font-weight: bold;
+            background-color: transparent;
+            border: 2px solid black;
+            padding: 0 10px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h1>CV</h1>
+        <form v-on:submit="submit">
+            <div class="data">
+                <h3>Name, surname, age</h3>
+                <input type="text" placeholder="NAME" v-model='cv.name'>
+                <input type="text" placeholder="SURNAME" v-model='cv.surname'>
+                <input type="number" placeholder="AGE" v-model='cv.age'>
+            </div>
+
+            <div class="sex">
+                <h3>Sex</h3>
+                <input type="radio" id="male" value="male" v-model='cv.sex'>
+                <label for="male">Male</label>
+                <input type="radio" id="female" value="female" v-model='cv.sex'>
+                <label for="female">Female</label>
+            </div>
+
+            <div class="education">
+                <h3>Education</h3>
+                <select name="education" v-model='cv.education'>
+                    <option disabled value="">Education level</option>
+                    <option>none</option>
+                    <option>primary</option>
+                    <option>seconadary</option>
+                    <option>higher</option>
+                </select>
+            </div>
+
+            <div class="skills">
+                <h3>Additional skills</h3>
+                <div>
+                    <input type="checkbox" id="s1" value="computer_skills" v-model="cv.skills"> <label
+                        for="computer_skills">Computer
+                        skills</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="s2" value="driving_license" v-model="cv.skills"> <label
+                        for="driving_license">Driving
+                        license</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="s3" value="creativity" v-model="cv.skills"> <label
+                        for="creativity">Creativity</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="s4" value="teamwork" v-model="cv.skills"> <label
+                        for="teamwork">Teamwork</label>
+                </div>
+            </div>
+
+            <button type="submit" class="btn">Save CV</button>
+        </form>
+
+        <button v-on:click='load' class="btn">Load CV</button>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                cv: {
+                    name: '',
+                    surname: '',
+                    age: 0,
+                    sex: '',
+                    education: '',
+                    skills: []
+                }
+            },
+            methods: {
+                submit: function (event) {
+                    event.preventDefault();
+
+                    const cv = this.cv;
+                    localStorage.setItem('cv', JSON.stringify(cv));
+                },
+
+                load: function () {
+                    const cv = JSON.parse(localStorage.getItem('cv'));
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

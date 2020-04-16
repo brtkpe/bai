@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        div {
+            margin: 10px 10px;
+            font-size: 20px;
+        }
+        h2 {
+            margin:0 10px;
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="c1">
+            <input type="checkbox" id="c1" value="BAI" v-model="courses"> <label for="BAI">BAI</label>
+        </div>
+        <div class="c2">
+            <input type="checkbox" id="c2" value="MIHE" v-model="courses"> <label for="MIHE">MIHE</label>
+        </div>
+        <div class="c3">
+            <input type="checkbox" id="c3" value="MOP" v-model="courses"> <label for="MOP">MOP</label>
+        </div>
+        <div class="c4">
+            <input type="checkbox" id="c4" value="MISK" v-model="courses"> <label for="MISK">MISK</label>
+        </div>
+        <div class="c5">
+            <input type="checkbox" id="c5" value="PK" v-model="courses"> <label for="PK">PK</label>
+        </div>
+        <h2>Number of selected courses: {{ checkedCourses }}</h2>
+    </div>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                courses: []
+            },
+            computed: {
+                checkedCourses: function(){
+                   const courses = this.courses;
+                    return courses.length;
+                }
+            }
+
+        });
+    </script>
+
+</body>
+
+</html>
