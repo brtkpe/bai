@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h2>Film1</h2>
+        <film1></film1>
+        <h2>Film2</h2>
+        <film2></film2>
+        <h2>Film3</h2>
+        <film3></film3>
+    </div>
+    <script>
+        Vue.component('film1', {
+            template: '<div><p>Title: {{title}}, Director: {{director}}, Year of production: {{yearProduction}}</p></div>',
+            data: function () {
+                return {
+                    title: 'Pulp Fiction',
+                    director: 'Quentin Tarantino',
+                    yearProduction: '1994'
+                }
+            }
+        });
+        Vue.component('film2', {
+            template: '<p>Title: {{title}}, Director: {{director}}, Year of production: {{yearProduction}}</p>',
+            data: function () {
+                return {
+                    title: 'The Wolf of Wall Street',
+                    director: 'Martin Scorsese',
+                    yearProduction: '2013'
+                }
+            }
+        });
+        Vue.component('film3', {
+            template: '<p>Title: {{title}}, Director: {{director}}, Year of production: {{yearProduction}}</p>',
+            data: function () {
+                return {
+                    title: 'American Sniper',
+                    director: 'Clint Eastwood',
+                    yearProduction: '2014'
+                }
+            }
+        });
+
+        new Vue({
+            el: '#app'
+        });
+    </script>
+</body>
+
+</html>

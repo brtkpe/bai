@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            text-align: center;
+            border: 2px solid black;
+            padding: 5px;
+        }
+
+        tr:nth-of-type(2),
+        tr:nth-of-type(18),
+        tr:nth-of-type(10),
+        tr:nth-of-type(11) {
+            font-weight: bold;
+            background-color: green;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <btcrates></btcrates>
+    </div>
+    <script>
+        Vue.component('btcrates', {
+            template: '<table><tr><th>BTC PRICE</th></tr><tr v-for="item in rates"><td>{{ item.buy }} {{ item.symbol }}</td></tr></table>',
+            data() {
+                return {
+                    rates: null
+                }
+            },
+            mounted() {
+                axios
+                    .get('https://blockchain.info/ticker')
+                    .then(response => {
+                        this.rates = response.data
+                    })
+            }
+        });
+
+        new Vue({
+            el: '#app'
+        });
+    </script>
+</body>
+
+</html>

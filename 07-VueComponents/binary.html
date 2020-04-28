@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        span {
+            font-weight: bold;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <conversion v-for="value in [8,170,204,3855]" :value="value"></conversion>
+    </div>
+    <script>
+        Vue.component('conversion', {
+            template: '<p><span>{{value}}</span>(10) = <span>{{convToBin}}</span>(2)</p>',
+            props: {
+                value: Number
+            },
+            computed: {
+                convToBin: function () {
+                    return this.value.toString(2);
+                }
+            }
+        });
+
+        new Vue({
+            el: '#app'
+        });
+    </script>
+</body>
+
+</html>

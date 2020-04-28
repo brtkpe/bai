@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h2>von Neumann architecture</h2>
+        <architecture></architecture>
+    </div>
+    <script>
+        Vue.component('architecture', {
+            template: '<ol><li v-for="element in elements">{{ element }}</li></ol>',
+            data: function () {
+                return {
+                    elements: [
+                        'Memory',
+                        'Control Unit',
+                        'Arithmetic Logic Unit',
+                        'Input',
+                        'Output'
+                    ]
+                }
+            }
+        });
+
+        new Vue({
+            el: '#app'
+        });
+    </script>
+
+</body>
+
+</html>
