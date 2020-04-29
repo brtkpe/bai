@@ -37,7 +37,7 @@
     <script>
         Vue.component('btcrates', {
             template: '<table><tr><th>BTC PRICE</th></tr><tr v-for="item in rates"><td>{{ item.buy }} {{ item.symbol }}</td></tr></table>',
-            data() {
+            data: function() {
                 return {
                     rates: null
                 }
